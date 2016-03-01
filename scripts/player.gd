@@ -7,6 +7,7 @@ const DOWN = Vector2(0, 1)
 const RUN_SPEED = 500
 
 var moving = false
+var prev_x = 0
 
 onready var anim_player = get_node("anim_player")
 onready var sprite = get_node("sprite")
@@ -37,6 +38,10 @@ func _fixed_process(delta):
 		moving = false
 		_update_moving()
 		
+	if dir.x != 0 and dir.x != prev_x:
+		prev_x = dir.x
+		_dir_changed(dir.x)
+		
 	var motion = dir.normalized() * RUN_SPEED
 	
 	move(motion * delta)
@@ -48,4 +53,5 @@ func _update_moving():
 		anim_player.stop()
 		sprite.set_frame(0)
 
-
+func _dir_changed(new):
+	sprite.set_flip_h(new < 0)
