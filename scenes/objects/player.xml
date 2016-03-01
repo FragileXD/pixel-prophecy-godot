@@ -48,7 +48,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="29">
+			<string_array  len="30">
 				<string> "player" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
@@ -74,10 +74,11 @@
 				<string> "blend_times" </string>
 				<string> "autoplay" </string>
 				<string> "AnimationPlayer" </string>
-				<string> "CollisionShape2D" </string>
+				<string> "coll_shape" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
+				<string> "CollisionShape2D" </string>
 			</string_array>
 			<string> "node_count" </string>
 			<int> 4 </int>
@@ -85,7 +86,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="72"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 6, 0, 0, 0, 14, 11, -1, 2, 12, 7, 13, 8, 0, 0, 0, 24, 15, -1, 8, 16, 3, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 22, 14, 23, 15, 0, 0, 0, 25, 25, -1, 3, 26, 1, 27, 0, 28, 16, 0 </int_array>
+			<int_array  len="72"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 2, 4, 0, 5, 3, 6, 3, 7, 4, 8, 5, 9, 6, 0, 0, 0, 14, 11, -1, 2, 12, 7, 13, 8, 0, 0, 0, 24, 15, -1, 8, 16, 3, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 22, 14, 23, 15, 0, 0, 0, 29, 25, -1, 3, 26, 1, 27, 0, 28, 16, 0 </int_array>
 			<string> "variants" </string>
 			<array  len="17" shared="false">
 				<bool> False </bool>
