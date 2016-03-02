@@ -1,7 +1,7 @@
 Pixel Prophecy
 ==============
 
-Pixel Prophecy is a 2D Fast-Paced action adventure RPG [originally][original] with Java 1.8, LibGDX and such. This version is created with [Godot][godot].
+Pixel Prophecy is a 3D Fast-Paced action adventure RPG [originally][original] with Java 1.8, LibGDX and such. This version is created with [Godot][godot].
 
 Running
 -------
