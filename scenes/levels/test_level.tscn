@@ -49,7 +49,7 @@ srgb/enabled = false
 
 [node name="Node" type="Node"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -67,7 +67,7 @@ params/bake_mode = 0
 params/energy = 2.0
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
-shadow/shadow = false
+shadow/shadow = true
 shadow/darkening = 0.0
 shadow/z_offset = 0.001
 shadow/z_slope_scale = 0.0
@@ -83,7 +83,7 @@ params/attenuation = 1.0
 [node name="Spatial" type="Spatial" parent="Player"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 0.894386, 0.447297, 0, -0.447297, 0.894386, 0, 8.02304, 14.0632 )
+transform/local = Transform( 1, 0, 0, 0, 0.767597, 0.640934, 0, -0.640934, 0.767597, 0, 13.4461, 16.3312 )
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 
@@ -92,7 +92,7 @@ transform/local = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 [node name="Camera" type="InterpolatedCamera" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 0.894386, 0.447297, 0, -0.447297, 0.894386, 0, 8.02304, 14.0632 )
+transform/local = Transform( 1, -0, 0, 0, 0.767597, 0.640934, -0, -0.640934, 0.767597, 0, 13.4461, 16.342 )
 projection = 0
 fov = 60.0
 near = 0.1
@@ -106,5 +106,29 @@ v_offset = 0.0
 target = NodePath("../Player/Spatial")
 speed = 6.0
 enabled = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -0.014821, -0.676568, 0.736231, 0.472452, 0.644194, 0.6015, -0.881232, 0.356749, 0.310098, 15.9681, 20.4422, 0 )
+layers = 1
+params/enabled = true
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 0.291944
+colors/diffuse = Color( 1, 1, 1, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+shadow/mode = 0
+shadow/max_distance = 0.0
+shadow/split_weight = 0.5
+shadow/zoffset_scale = 2.0
 
 
