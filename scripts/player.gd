@@ -26,9 +26,13 @@ onready var anim_player = get_node("AnimationPlayer")
 onready var mesh = get_node("Armature/Skeleton/Player")
 
 func _ready():
+	set_fixed_process(true)
+	
 	set_look_at(start_dir)
 	target_dir = start_dir
-	set_fixed_process(true)
+	
+	var f = get_node("/root/Node/Floor")
+	f.connect("spell_cast", self, "_spell_cast")
 	
 func _fixed_process(delta):
 	var left = Input.is_action_pressed("move_left")
@@ -74,3 +78,6 @@ func set_look_at(new_dir):
 	dir = new_dir
 	var pos = mesh.get_global_transform().origin
 	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
+
+func _spell_cast(pos):
+	print("spell cast at pos" + str(pos))

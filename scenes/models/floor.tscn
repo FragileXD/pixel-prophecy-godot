@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
-[sub_resource type="FixedMaterial" id=1]
+[sub_resource type="BoxShape" id=4]
 
-resource/name = "Material_001"
+extents = Vector3( 7.53137, 1, 7.47429 )
+
+[sub_resource type="FixedMaterial" id=2]
+
 flags/visible = true
 flags/double_sided = true
 flags/invert_faces = false
@@ -38,23 +41,34 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="Mesh" id=2]
+[sub_resource type="Mesh" id=3]
 
-resource/name = "Plane"
-surfaces/0 = { "alphasort":false, "arrays":[ Vector3Array( 1, 0, 1, 1, 0, -1, -1, 0, -1, -1, 0, 1 ), Vector3Array( 0, 1, -0, 0, 1, -0, 0, 1, -0, 0, 1, -0 ), null, null, null, null, null, null, IntArray( 0, 2, 1, 3, 2, 0 ) ], "material":SubResource( 1 ), "morph_arrays":[  ], "name":"Material_001", "primitive":4 }
+surfaces/0 = { "alphasort":false, "arrays":[ Vector3Array( 1, 0, 1, 1, 0, -1, -1, 0, -1, -1, 0, 1 ), Vector3Array( 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 ), null, null, null, null, null, null, IntArray( 0, 2, 1, 3, 2, 0 ) ], "material":SubResource( 2 ), "morph_arrays":[  ], "name":"Material_001", "primitive":4 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[node name="Floor" type="Spatial"]
+[node name="Floor" type="KinematicBody"]
 
 _import_path = NodePath(".")
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+input/ray_pickable = true
+input/capture_on_drag = true
+shape_count = 1
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+layers = 1
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
 __meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="Mesh" type="MeshInstance" parent="."]
 
 _import_path = NodePath("Floor")
 _import_transform = Transform( 7.37112, 0, 0, 0, 7.37112, 0, 0, 0, 7.37112, 0, 0, 0 )
-transform/local = Transform( 7.37112, 0, 0, 0, 7.37112, 0, 0, 0, 7.37112, 0.0521545, -9.53674e-007, -7.15256e-007 )
+transform/local = Transform( 7.37112, 0, 0, 0, 7.37112, 0, 0, 0, 7.37112, 0.0521545, -9.53674e-07, -7.15256e-07 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -69,7 +83,14 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = true
 geometry/baked_light_tex_id = 0
-mesh/mesh = SubResource( 2 )
+mesh/mesh = SubResource( 3 )
 mesh/skeleton = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
 
 
