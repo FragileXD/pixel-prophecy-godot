@@ -27,6 +27,7 @@ onready var mesh = get_node("Armature/Skeleton/Player")
 
 func _ready():
 	set_look_at(start_dir)
+	target_dir = start_dir
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
