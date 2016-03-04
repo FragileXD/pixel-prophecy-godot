@@ -1,6 +1,8 @@
 
 extends Spatial
 
+export var start_dir = Vector3(0, 0, -1)
+
 const RIGHT = Vector3(1, 0, 0)
 const UP = Vector3(0, 0, -1)
 const RUN_SPEED = 10
@@ -14,6 +16,9 @@ var target_rot = 0
 
 var angle = 0
 
+var target_dir = Vector3(0, 0, 0)
+var dir = Vector3(0, 0, 0)
+
 
 # nodes
 
@@ -21,6 +26,7 @@ onready var anim_player = get_node("AnimationPlayer")
 onready var mesh = get_node("Armature/Skeleton/Player")
 
 func _ready():
+	set_look_at(start_dir)
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
@@ -51,6 +57,7 @@ func _fixed_process(delta):
 		_dir_changed(motion)
 	
 	translate(motion.normalized() * RUN_SPEED * delta)
+	set_look_at(dir.linear_interpolate(target_dir, 20 * delta))
 	
 # Animation callbacks
 func _moving_changed():
@@ -60,5 +67,9 @@ func _moving_changed():
 		anim_player.play("idle")
 
 func _dir_changed(new_dir):
-	var nd2 = Vector2(new_dir.x, new_dir.z)
-	mesh.set_rotation(Vector3(0, nd2.angle(), 0))
+	target_dir = new_dir
+	
+func set_look_at(new_dir):
+	dir = new_dir
+	var pos = mesh.get_global_transform().origin
+	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
