@@ -80,4 +80,5 @@ func set_look_at(new_dir):
 	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
 
 func _spell_cast(pos):
-	print("spell cast at pos" + str(pos))
+	pos.y = 0
+	print("spell cast to dir" + str((get_translation() - pos).normalized()))
