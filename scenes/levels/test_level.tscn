@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/objects/floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/objects/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/fireball.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=1]
 
@@ -76,14 +77,14 @@ enabled = true
 
 [node name="Floor" parent="." instance=ExtResource( 1 )]
 
-transform/local = Transform( 4, -0, 0, 0, 1, -0, 0, 0, 2, 0, 0, 0 )
+transform/local = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Cam-target" type="Spatial" parent="Player"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, -0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16, 15 )
+transform/local = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16, 15 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 
@@ -130,5 +131,9 @@ projector = null
 operator = 0
 params/radius = 30.0
 params/attenuation = 1.0
+
+[node name="Fireball" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -115.527, 2, 0 )
 
 
