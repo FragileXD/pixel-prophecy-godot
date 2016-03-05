@@ -22,8 +22,8 @@ var dir = Vector3(0, 0, 0)
 
 # nodes
 
-onready var anim_player = get_node("AnimationPlayer")
-onready var mesh = get_node("Armature/Skeleton/Player")
+onready var anim_player = get_node("Player-Model/AnimationPlayer")
+onready var mesh = get_node("Player-Model/Armature/Skeleton/Mesh")
 
 func _ready():
 	set_fixed_process(true)
