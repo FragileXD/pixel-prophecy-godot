@@ -80,5 +80,8 @@ func set_look_at(new_dir):
 	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
 
 func _spell_cast(pos):
-	pos.y = 0
-	print("spell cast to dir" + str((get_translation() - pos).normalized()))
+	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
+	var dir = (get_translation() - pos).normalized()
+	fireball.set_direction(-dir)
+	fireball.set_translation(get_translation() + Vector3(0, 2, 0) - dir * 2)
+	get_node("/root/Node").add_child(fireball)

@@ -1,7 +1,7 @@
 
 extends KinematicBody
 
-var direction = Vector3(1, 0, 0)
+var direction = Vector3(0, 0, 0)
 var speed = 25
 
 func _ready():
@@ -9,4 +9,6 @@ func _ready():
 	
 func _fixed_process(delta):
 	move(direction * delta * speed)
-
+	
+func set_direction(dir):
+	direction = dir
