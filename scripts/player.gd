@@ -1,5 +1,5 @@
 
-extends Spatial
+extends KinematicBody
 
 export var start_dir = Vector3(0, 0, -1)
 
@@ -61,7 +61,7 @@ func _fixed_process(delta):
 		prev_dir = motion
 		_dir_changed(motion)
 	
-	translate(motion.normalized() * RUN_SPEED * delta)
+	move(motion.normalized() * RUN_SPEED * delta)
 	set_look_at(dir.linear_interpolate(target_dir, 20 * delta))
 	
 # Animation callbacks

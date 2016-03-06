@@ -49,7 +49,7 @@ srgb/enabled = false
 
 [node name="Node" type="Node"]
 
-__meta__ = { "__editor_plugin_screen__":"3D" }
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -76,9 +76,11 @@ enabled = true
 
 [node name="Floor" parent="." instance=ExtResource( 1 )]
 
-transform/local = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+transform/local = Transform( 8, 0, 0, -0, 1, 0, 0, -0, 8, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+
+collision/margin = 0.001
 
 [node name="Cam-target" type="Spatial" parent="Player"]
 
