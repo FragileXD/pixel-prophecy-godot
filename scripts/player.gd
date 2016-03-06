@@ -61,7 +61,13 @@ func _fixed_process(delta):
 		prev_dir = motion
 		_dir_changed(motion)
 	
-	move(motion.normalized() * RUN_SPEED * delta)
+	motion = motion.normalized() * RUN_SPEED * delta
+	
+	if is_colliding():
+		var n = get_collision_normal()
+		motion = n.slide(motion)
+	
+	move(motion)
 	set_look_at(dir.linear_interpolate(target_dir, 20 * delta))
 	
 # Animation callbacks

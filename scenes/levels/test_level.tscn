@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/objects/floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/objects/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/wall.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Environment" id=1]
 
@@ -49,7 +50,7 @@ srgb/enabled = false
 
 [node name="Node" type="Node"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -132,5 +133,9 @@ projector = null
 operator = 0
 params/radius = 30.0
 params/attenuation = 1.0
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 8, -16.3729, 2.50136, 0 )
 
 

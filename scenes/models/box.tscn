@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=1]
+
+[sub_resource type="FixedMaterial" id=1]
+
+resource/name = "Material.001"
+flags/visible = true
+flags/double_sided = false
+flags/invert_faces = false
+flags/unshaded = false
+flags/on_top = false
+flags/lightmap_on_uv2 = true
+flags/colarray_is_srgb = true
+params/blend_mode = 0
+params/depth_draw = 1
+params/line_width = 0.0
+fixed_flags/use_alpha = false
+fixed_flags/use_color_array = false
+fixed_flags/use_point_size = false
+fixed_flags/discard_alpha = false
+fixed_flags/use_xy_normalmap = false
+params/diffuse = Color( 0.0204531, 0.230637, 0, 1 )
+params/specular = Color( 0, 0, 0, 1 )
+params/emission = Color( 0, 0, 0, 1 )
+params/specular_exp = 50.0
+params/detail_mix = 1.0
+params/normal_depth = 1
+params/shader = 0
+params/shader_param = 0.5
+params/glow = 0
+params/point_size = 1.0
+uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+textures/diffuse_tc = 0
+textures/detail_tc = 0
+textures/specular_tc = 0
+textures/emission_tc = 0
+textures/specular_exp_tc = 0
+textures/glow_tc = 0
+textures/normal_tc = 0
+textures/shade_param_tc = 0
+
+[sub_resource type="Mesh" id=2]
+
+resource/name = "Cube"
+surfaces/0 = { "alphasort":false, "arrays":[ Vector3Array( 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -0.999999, -1, 1, -1, -1, 1, 1, 0.999999, 1, 1, 1, -1, -1, 1, 1, -0.999999, 0.999999, 1, 1, 1, -1, 1, 1, -1, 1, 0.999999, 1, 1, -1, 1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -0.999999, 1, -1, -1, -1, -1, -1, -1, 1, -1 ), Vector3Array( 0, -0.999, -0, 0, -0.999, -0, 0, -0.999, -0, 0, -0.999, -0, 0, 1, -0, 0, 1, -0, 0, 1, -0, 0, 1, -0, 1, 0, -0, 1, 0, -0, 1, 0, -0, 1, 0, -0, 0, 0, 0.999, 0, 0, 0.999, 0, 0, 0.999, 0, 0, 0.999, -0.999, 0, -0, -0.999, 0, -0, -0.999, 0, -0, -0.999, 0, -0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1 ), null, null, null, null, null, null, IntArray( 0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10, 12, 14, 13, 12, 15, 14, 16, 18, 17, 16, 19, 18, 20, 22, 21, 20, 23, 22 ) ], "material":SubResource( 1 ), "morph_arrays":[  ], "name":"Material.001", "primitive":4 }
+custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+
+[node name="Box-Model" type="Spatial"]
+
+_import_path = NodePath(".")
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="Mesh" type="MeshInstance" parent="."]
+
+_import_path = NodePath("Box")
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = true
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = true
+geometry/baked_light_tex_id = 0
+mesh/mesh = SubResource( 2 )
+mesh/skeleton = NodePath("..")
+
+
