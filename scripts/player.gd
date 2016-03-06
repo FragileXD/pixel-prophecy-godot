@@ -31,8 +31,8 @@ func _ready():
 	set_look_at(start_dir)
 	target_dir = start_dir
 	
-	var f = get_node("/root/Node/Floor")
-	f.connect("spell_cast", self, "_spell_cast")
+	var cam = get_node("/root/Node/Camera")
+	cam.connect("primary_spell_cast", self, "_primary_spell_cast")
 	
 func _fixed_process(delta):
 	var left = Input.is_action_pressed("move_left")
@@ -85,7 +85,8 @@ func set_look_at(new_dir):
 	var pos = mesh.get_global_transform().origin
 	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
 
-func _spell_cast(pos):
+func _primary_spell_cast(pos):
+	pos.y = 0
 	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
 	var dir = (get_translation() - pos).normalized()
 	fireball.set_direction(-dir)
