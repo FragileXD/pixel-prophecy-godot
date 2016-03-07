@@ -1,6 +1,7 @@
 
 extends KinematicBody
 
+# Body variables
 var run_speed = 1
 
 var dir = Vector3(0, 0, 0)
@@ -14,8 +15,12 @@ var moving = false
 onready var mesh = get_node("Player-Model/Armature/Skeleton/Mesh")
 onready var anim_player = get_node("Player-Model/AnimationPlayer")
 
-func _init(runspeed):
+# Entity variables
+var health = 0
+
+func _init(runspeed, hp):
 	run_speed = runspeed
+	health = hp
 
 func _ready():
 	set_fixed_process(true)
@@ -24,7 +29,12 @@ func _ready():
 	set_look_at(Vector3(1, 0, 0))
 	target_dir = Vector3(1, 0, 0)
 	
+	anim_player.connect("finished", self, "_anim_finished")
+	
 func _fixed_process(delta):
+	if is_dead():
+		return
+		
 	var motion = target_move_dir
 	
 	if motion.length() > 0 and not moving:
@@ -72,8 +82,36 @@ func _dir_changed(new_dir):
 ## Spells!
 
 func primary_spell_cast(dir):
+	if is_dead():
+		return
+		
 	dir = dir.normalized()
 	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
 	fireball.set_direction(dir)
+	fireball.set_damage(50)
 	fireball.set_translation(get_translation() + Vector3(0, 2, 0) + dir * 2)
 	get_node("/root/Node").add_child(fireball)
+	
+# Damage D:
+	
+func receive_damage(amount):
+	health -= amount
+	if is_dead():
+		_on_death()
+		anim_player.play("die")
+		clear_shapes()
+
+func is_dead():
+	return health <= 0
+	
+func _anim_finished():
+	if anim_player.get_current_animation() == "die":
+		_on_death_end()
+		queue_free()
+	
+func _on_death():
+	print("default")
+
+func _on_death_end():
+	print("death_end")
+	

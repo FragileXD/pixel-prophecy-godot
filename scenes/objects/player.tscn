@@ -24,7 +24,7 @@ collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"3D" }
+__meta__ = { "__editor_plugin_screen__":"Script" }
 start_dir = Vector3( 0, 0, -1 )
 
 [node name="Player-Model" parent="." instance=ExtResource( 2 )]

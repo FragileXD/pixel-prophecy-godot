@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -56,7 +56,21 @@ custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=4]
 
-resource/name = "idle"
+resource/name = "die"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Armature/Skeleton/Mesh:transform/translation")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector3( 0, 0, 0 ), Vector3( 0, -3.40399, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Armature/Skeleton/Mesh:transform/rotation")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector3( 0, 0, 0 ), Vector3( 0, 0, -55.7654 ) ] }
+
+[sub_resource type="Animation" id=5]
+
 length = 2.08333
 loop = true
 step = 0.1
@@ -105,9 +119,8 @@ tracks/10/path = NodePath("Armature/Skeleton:R.Leg")
 tracks/10/interp = 1
 tracks/10/keys = FloatArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.125, 1, 0, 1.7053e-13, 0, 0.000288662, -7.09192e-19, 3.55271e-15, 1, 1, 1, 1, 0.166667, 1, 0, -1.0175e-11, 0, 0.000513968, 1.82598e-18, 3.55271e-15, 1, 1, 1, 1, 0.208333, 1, 0, 1.15961e-11, -7.45058e-09, 0.000802551, 0, 0, 1, 1, 1, 1, 0.25, 1, 0, 4.09273e-12, 0, 0.00115204, 2.84602e-18, -3.55272e-15, 0.999999, 1, 1, 1, 0.291667, 1, 0, 7.27596e-12, 0, 0.00155875, -5.5378e-18, -3.55271e-15, 0.999999, 1, 1, 1, 0.333333, 1, 0, -5.00222e-11, 0, 0.00201753, -6.93888e-18, 1.39761e-20, 0.999998, 1, 1, 1, 1, 1, 0, 0, 0, 0.00899686, -3.19633e-17, -3.55257e-15, 0.99996, 1, 1, 1, 1.04167, 1, 0, 2.91038e-11, 0, 0.00902866, -7.89311e-10, -3.21371e-16, 0.999959, 1, 1, 1, 1.16667, 1, 0, 5.82077e-11, 0, 0.00874002, -7.89312e-10, -7.72415e-16, 0.999962, 1, 1, 1, 1.20833, 1, 0, 0, 0, 0.00851472, -7.89313e-10, 2.59286e-15, 0.999964, 1, 1, 1, 1.25, 1, 0, -1.45519e-11, 0, 0.00822615, -7.89314e-10, 5.75211e-15, 0.999966, 1, 1, 1, 1.29167, 1, 0, 2.91038e-11, 0, 0.00787666, -7.89314e-10, 3.46782e-15, 0.999969, 1, 1, 1, 1.33333, 1, 0, 0, -7.45058e-09, 0.00746997, -7.89315e-10, 2.20923e-15, 0.999972, 1, 1, 1, 1.375, 1, 0, 8.73115e-11, -7.45058e-09, 0.0070112, -7.89317e-10, -4.62359e-15, 0.999975, 1, 1, 1, 2.04167, 1, 0, 2.30926e-13, -7.45058e-09, 3.18031e-05, -7.89311e-10, -3.31914e-15, 1, 1, 1, 1, 2.08333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource/name = "run"
 length = 0.666667
 loop = true
 step = 0.1
@@ -227,6 +240,7 @@ bones/9/bound_childs = [  ]
 
 _import_path = NodePath("Armature/Skeleton/Player")
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, -0, 0, 0, 1, -0, 0, 0, 1, 0, 0, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -250,8 +264,9 @@ _import_path = NodePath("AnimationPlayer")
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/idle = SubResource( 4 )
-anims/run = SubResource( 5 )
+anims/die = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/run = SubResource( 6 )
 next/idle = "1"
 playback/active = true
 playback/speed = 1.0

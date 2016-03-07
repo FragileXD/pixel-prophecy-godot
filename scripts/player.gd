@@ -6,7 +6,7 @@ export var start_dir = Vector3(0, 0, -1)
 const RIGHT = Vector3(1, 0, 0)
 const UP = Vector3(0, 0, -1)
 
-func _init().(10):
+func _init().(10, 100):
 	pass
 
 func _ready():
@@ -40,3 +40,7 @@ func _primary_spell_cast(pos):
 	var rel = pos - get_translation()
 	rel.y = 0
 	primary_spell_cast(rel)
+
+func _on_death_end():
+	Global_vars.player = null
+	print("player's choice!")

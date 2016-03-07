@@ -9,7 +9,8 @@ var explosion_left = 0
 var explosion_time = 1
 
 onready var fire_particles = get_node("Fire")
-onready var area = get_node("Area")
+
+var damage = 0
 
 func _ready():
 	set_fixed_process(true)
@@ -18,6 +19,8 @@ func _fixed_process(delta):
 	
 	if is_colliding() > 0 and not exploded:
 		exploded = true
+		if get_collider() extends preload("entity.gd"):
+			get_collider().receive_damage(damage)
 		explosion_left = explosion_time
 		var explosion = preload("res://scenes/objects/expolsion.tscn").instance()
 		explosion.set_translation(get_translation())
@@ -38,3 +41,6 @@ func _fixed_process(delta):
 	
 func set_direction(dir):
 	direction = dir
+	
+func set_damage(amount):
+	damage = amount
