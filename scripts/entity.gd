@@ -19,6 +19,7 @@ func _init(runspeed):
 
 func _ready():
 	set_fixed_process(true)
+	set_collide_with_kinematic_bodies(false)
 	
 	set_look_at(Vector3(1, 0, 0))
 	target_dir = Vector3(1, 0, 0)

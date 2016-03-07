@@ -9,12 +9,14 @@ var explosion_left = 0
 var explosion_time = 1
 
 onready var fire_particles = get_node("Fire")
+onready var area = get_node("Area")
 
 func _ready():
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
-	if is_colliding() and not exploded:
+	
+	if is_colliding() > 0 and not exploded:
 		exploded = true
 		explosion_left = explosion_time
 		var explosion = preload("res://scenes/objects/expolsion.tscn").instance()
