@@ -6,7 +6,7 @@
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="Wall" type="KinematicBody"]
+[node name="Wall" type="StaticBody"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
@@ -16,11 +16,10 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shapes/0/trigger = false
 layers = 1
-collide_with/static = true
-collide_with/kinematic = true
-collide_with/rigid = true
-collide_with/character = true
-collision/margin = 0.001
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
 __meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
