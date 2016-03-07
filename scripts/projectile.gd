@@ -32,7 +32,6 @@ func _fixed_process(delta):
 	if exploded and explosion_left > 0:
 		explosion_left -= delta
 	if exploded and explosion_left <= 0:
-		print("removed")
 		free()
 	
 func set_direction(dir):

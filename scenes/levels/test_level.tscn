@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/camera.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/objects/wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/objects/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/npc.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=1]
 
@@ -140,5 +141,10 @@ projector = null
 operator = 0
 params/radius = 30.0
 params/attenuation = 1.0
+
+[node name="NPC" parent="." instance=ExtResource( 5 )]
+
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.74516, 0, 0 )
+collision/margin = 0.001
 
 

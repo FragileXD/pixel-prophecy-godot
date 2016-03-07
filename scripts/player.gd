@@ -1,35 +1,16 @@
 
-extends KinematicBody
+extends "entity.gd"
 
 export var start_dir = Vector3(0, 0, -1)
 
 const RIGHT = Vector3(1, 0, 0)
 const UP = Vector3(0, 0, -1)
-const RUN_SPEED = 10
 
-# animation variables
-
-var moving = false
-var prev_dir = Vector3(0, 0, 0)
-
-var target_rot = 0
-
-var angle = 0
-
-var target_dir = Vector3(0, 0, 0)
-var dir = Vector3(0, 0, 0)
-
-
-# nodes
-
-onready var anim_player = get_node("Player-Model/AnimationPlayer")
-onready var mesh = get_node("Player-Model/Armature/Skeleton/Mesh")
+func _init().(10):
+	pass
 
 func _ready():
 	set_fixed_process(true)
-	
-	set_look_at(start_dir)
-	target_dir = start_dir
 	
 	var cam = get_node("/root/Node/Camera")
 	cam.connect("primary_spell_cast", self, "_primary_spell_cast")
@@ -49,46 +30,13 @@ func _fixed_process(delta):
 		motion += UP
 	if down:
 		motion -= UP
-	
-	if motion.length() > 0 and not moving:
-		moving = true
-		_moving_changed()
-	elif motion.length() == 0 and moving:
-		moving = false
-		_moving_changed()
 		
-	if moving and prev_dir != motion:
-		prev_dir = motion
-		_dir_changed(motion)
-	
-	motion = motion.normalized() * RUN_SPEED * delta
-	
-	if is_colliding():
-		var n = get_collision_normal()
-		motion = n.slide(motion)
-	
-	move(motion)
-	set_look_at(dir.linear_interpolate(target_dir, 20 * delta))
-	
-# Animation callbacks
-func _moving_changed():
-	if moving:
-		anim_player.play("run")
-	else:
-		anim_player.play("idle")
+	move_towards(motion)
 
-func _dir_changed(new_dir):
-	target_dir = new_dir
+func _enter_tree():
+	Global_vars.player = self
 	
-func set_look_at(new_dir):
-	dir = new_dir
-	var pos = mesh.get_global_transform().origin
-	mesh.look_at(pos - new_dir, Vector3(0, 1, 0))
-
 func _primary_spell_cast(pos):
-	pos.y = 0
-	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
-	var dir = (get_translation() - pos).normalized()
-	fireball.set_direction(-dir)
-	fireball.set_translation(get_translation() + Vector3(0, 2, 0) - dir * 2)
-	get_node("/root/Node").add_child(fireball)
+	var rel = pos - get_translation()
+	rel.y = 0
+	primary_spell_cast(rel)
