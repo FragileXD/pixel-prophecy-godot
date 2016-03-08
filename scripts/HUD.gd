@@ -5,9 +5,9 @@ var inventory
 
 onready var player = Global_vars.player
 
-const capacity_default = Color(255, 255, 255)
-const capacity_mid = Color(255, 0, 255)
-const capacity_danger = Color(255, 0, 0)
+const capacity_default = Color(1, 1, 1)
+const capacity_mid = Color(1, 1, 0)
+const capacity_danger = Color(1, 0.15, 0.15)
 
 var curr_inv_page = 0
 const items_per_page = 4
@@ -33,7 +33,6 @@ func update_inventory():
 	var max_w = player.inventory.weight_capacity
 	var percentage = curr_w * 1.0 / max_w
 	capacity.clear()
-	capacity.add_text("Capacity: ")
 	if percentage < 0.5:
 		capacity.push_color(capacity_default)
 	elif percentage < 0.75:
@@ -42,7 +41,7 @@ func update_inventory():
 		capacity.push_color(capacity_danger)
 	capacity.add_text(str(curr_w))
 	capacity.push_color(capacity_default)
-	capacity.add_text("/" + str(max_w))
+	capacity.add_text("/" + str(max_w) + "kg")
 	
 	var box = inventory.get_node("items/items-box")
 	for node in box.get_children():
@@ -54,6 +53,8 @@ func update_inventory():
 	var right = inventory.get_node("items/right")
 	left.set_disabled(curr_inv_page <= 0)
 	right.set_disabled(curr_inv_page >= page_amount-1)
+	
+	inventory.get_node("items/page-label").set_text(str(curr_inv_page + 1) + "/" + str(page_amount))
 	
 		
 	for idx in range(4):
@@ -68,7 +69,6 @@ func update_inventory():
 		button.set_text(item.name + ", " + str(item.weight) + "kg")
 		box.add_child(button)
 		button.connect("pressed", self, "_inventory_button_pressed", [idx + previous])
-		
 
 func _inventory_button_pressed(index):
 	player.inventory.items.remove(index)

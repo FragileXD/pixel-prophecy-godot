@@ -40,7 +40,7 @@ func _init(runspeed, hp):
 	max_health = hp
 
 func _ready():
-	inventory = inventory_class.new()
+	inventory = inventory_class.new(30)
 	var test_item = item_class.new("Test", 2)
 	while inventory.add_item(test_item.duplicate()) == inventory.SUCCESS:
 		pass

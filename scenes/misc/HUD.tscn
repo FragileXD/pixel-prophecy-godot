@@ -15,7 +15,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="inventory" type="WindowDialog" parent="."]
 
@@ -89,6 +89,23 @@ disabled = true
 toggle_mode = false
 text = "->"
 flat = false
+
+[node name="page-label" type="Label" parent="inventory/items"]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 50.0
+margin/right = 50.0
+margin/bottom = -20.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="capacity-label" type="RichTextLabel" parent="inventory"]
 
