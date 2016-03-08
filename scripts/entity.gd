@@ -87,6 +87,7 @@ func set_look_at(new_dir):
 func _moving_changed():
 	if moving:
 		anim_player.play("run")
+		print("run")
 	else:
 		anim_player.play("idle")
 

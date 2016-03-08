@@ -102,7 +102,7 @@ tracks/10/keys = FloatArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.04167, 1, 1.4
 
 resource/name = "idle"
 length = 2.08333
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature")
@@ -153,7 +153,7 @@ tracks/10/keys = FloatArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0416667, 1, 0
 
 resource/name = "run"
 length = 0.666667
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature")
@@ -204,7 +204,7 @@ tracks/10/keys = FloatArray( 0, 1, 0, -1.86265e-09, -7.45058e-09, -0.583708, 5.1
 
 _import_path = NodePath(".")
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="Armature" type="Spatial" parent="."]
 

@@ -29,6 +29,10 @@ start_dir = Vector3( 0, 0, -1 )
 
 [node name="Player-Model" parent="." instance=ExtResource( 2 )]
 
+[node name="AnimationPlayer" parent="Player-Model"]
+
+blend_times = [ "idle", "run", 0.2, "idle", "die", 1.0, "run", "idle", 0.2, "run", "die", 1.0 ]
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
