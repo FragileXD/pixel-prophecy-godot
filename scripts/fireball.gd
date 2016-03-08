@@ -1,5 +1,5 @@
 
-extends "projectile_rigid.gd"
+extends "projectile.gd"
 
 var damage = 0
 

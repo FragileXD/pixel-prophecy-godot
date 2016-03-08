@@ -6,6 +6,10 @@
 
 anchor/right = 1
 anchor/bottom = 1
+margin/left = -1.0
+margin/top = -5.0
+margin/right = 1.0
+margin/bottom = 5.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -37,31 +41,69 @@ anchor/bottom = 1
 margin/left = 12.0
 margin/top = 225.0
 margin/right = 12.0
-margin/bottom = 12.0
+margin/bottom = 39.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 
-[node name="scroll" type="ScrollContainer" parent="inventory/items"]
+[node name="items-box" type="VBoxContainer" parent="inventory/items"]
 
 anchor/right = 1
 anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-scroll/horizontal = false
-scroll/vertical = true
-
-[node name="items-box" type="VBoxContainer" parent="inventory/items/scroll"]
-
-margin/right = 295.0
-margin/bottom = 19.0
+rect/min_size = Vector2( 280, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
 alignment = 0
+
+[node name="left" type="Button" parent="inventory/items"]
+
+anchor/top = 1
+anchor/bottom = 1
+margin/right = 50.0
+margin/bottom = -19.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+text = "<-"
+flat = false
+
+[node name="right" type="Button" parent="inventory/items"]
+
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 50.0
+margin/bottom = -19.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+text = "->"
+flat = false
+
+[node name="capacity-label" type="RichTextLabel" parent="inventory"]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 12.0
+margin/top = 245.0
+margin/right = 12.0
+margin/bottom = 228.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
 
 

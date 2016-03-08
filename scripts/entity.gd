@@ -6,6 +6,11 @@ signal death
 signal death_end
 signal damage(amount)
 
+# Classes
+
+var inventory_class = preload("classes/inventory.gd")
+var item_class = preload("classes/item.gd")
+
 # Body variables
 var run_speed = 1
 
@@ -24,6 +29,7 @@ onready var anim_player = get_node("Player-Model/AnimationPlayer")
 var health = 0
 var max_health = 0
 var takes_damage = true
+var inventory
 
 var spawn_shapes = []
 var spawn_transforms = []
@@ -34,6 +40,13 @@ func _init(runspeed, hp):
 	max_health = hp
 
 func _ready():
+	inventory = inventory_class.new()
+	var test_item = item_class.new("Test", 2)
+	while inventory.add_item(test_item.duplicate()) == inventory.SUCCESS:
+		pass
+	
+	print(inventory.items)
+	
 	set_fixed_process(true)
 	for i in range(get_shape_count()):
 		spawn_transforms.append(get_shape_transform(i))
