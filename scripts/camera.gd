@@ -11,7 +11,7 @@ signal primary_spell_cast
 
 func _ready():
 	set_fixed_process(true)
-	get_node("HUD/spell_screen_coltrol").connect("input_event", self, "_input")
+	get_node("HUD").connect("input_event", self, "_input")
 	
 func _fixed_process(delta):
 	if should_ray:

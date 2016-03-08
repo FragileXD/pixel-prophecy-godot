@@ -1,51 +1,67 @@
-[gd_scene format=1]
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 
 [node name="HUD" type="Control"]
 
-margin/right = 40.0
-margin/bottom = 40.0
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-__meta__ = { "__editor_plugin_screen__":"2D" }
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
-[node name="spell_screen_coltrol" type="Control" parent="."]
+[node name="inventory" type="WindowDialog" parent="."]
 
-anchor/left = 2
-anchor/top = 2
-anchor/right = 2
-anchor/bottom = 2
-margin/right = 25.6
-margin/bottom = 15.0
+anchor/left = 1
+anchor/right = 1
+margin/left = 353.0
+margin/top = 65.0
+margin/right = 34.0
+margin/bottom = 490.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+popup/exclusive = false
+window/title = "Inventory"
+__meta__ = { "_edit_lock_":true }
+
+[node name="items" type="Panel" parent="inventory"]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 12.0
+margin/top = 225.0
+margin/right = 12.0
+margin/bottom = 12.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="scroll" type="ScrollContainer" parent="inventory/items"]
 
-margin/left = 45.0
-margin/top = 29.0
-margin/right = 342.0
-margin/bottom = 184.0
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+scroll/horizontal = false
+scroll/vertical = true
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="items-box" type="VBoxContainer" parent="inventory/items/scroll"]
 
-margin/left = 26.0
-margin/top = 17.0
-margin/right = 66.0
-margin/bottom = 30.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "Hello!"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+margin/right = 295.0
+margin/bottom = 19.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+alignment = 0
 
 
