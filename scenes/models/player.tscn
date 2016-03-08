@@ -204,7 +204,7 @@ tracks/10/keys = FloatArray( 0, 1, 0, -1.86265e-09, -7.45058e-09, -0.583708, 5.1
 
 _import_path = NodePath(".")
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-__meta__ = { "__editor_plugin_screen__":"3D" }
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="Armature" type="Spatial" parent="."]
 

@@ -91,8 +91,6 @@ transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 8, -16.3729, 2.50136, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-collision/margin = 0.001
-
 [node name="Cam-target" type="Spatial" parent="Player"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

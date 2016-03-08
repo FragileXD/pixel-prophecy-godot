@@ -26,6 +26,7 @@ var max_health = 0
 var takes_damage = true
 
 var spawn_shapes = []
+var spawn_transforms = []
 
 func _init(runspeed, hp):
 	run_speed = runspeed
@@ -35,7 +36,8 @@ func _init(runspeed, hp):
 func _ready():
 	set_fixed_process(true)
 	for i in range(get_shape_count()):
-		spawn_shapes.append(get_shape(i))
+		spawn_transforms.append(get_shape_transform(i))
+		spawn_shapes.append(get_shape(i).duplicate(true))
 		
 	set_look_at(Vector3(1, 0, 0))
 	target_dir = Vector3(1, 0, 0)
@@ -133,8 +135,11 @@ func _anim_finished():
 		emit_signal("death_end")
 		
 func spawn():
+	var i = 0
 	for shape in spawn_shapes:
 		add_shape(shape)
+		set_shape_transform(i, spawn_transforms[i])
+		i += 1
 	if anim_player != null:
 		anim_player.play_backwards("die")
 	health = max_health

@@ -16,7 +16,7 @@ func _init().(10, 100):
 	connect("spawn", self, "_on_spawn")
 	connect("death", self, "_on_death")
 	connect("damage", self, "_on_damage")
-	takes_damage = false
+	#takes_damage = false
 
 func _ready():
 	set_fixed_process(true)
@@ -30,7 +30,6 @@ func _ready():
 func _process(delta):
 	if is_dead():
 		if death_cd <= 0:
-			anim_player.play_backwards("die")
 			should_teleport = true
 			tele_location = spawn_point
 			spawn()
@@ -65,7 +64,6 @@ func _primary_spell_cast(pos):
 
 func _on_death():
 	death_cd = 5
-	Global_vars.player = null
 	
 func _on_spawn():
 	Global_vars.player = self
