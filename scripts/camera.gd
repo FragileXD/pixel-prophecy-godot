@@ -10,8 +10,8 @@ var to = Vector3(0, 0, 0)
 signal primary_spell_cast
 
 func _ready():
-	set_process_input(true)
 	set_fixed_process(true)
+	get_node("HUD/spell_screen_coltrol").connect("input_event", self, "_input")
 	
 func _fixed_process(delta):
 	if should_ray:

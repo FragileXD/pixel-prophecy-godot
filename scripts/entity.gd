@@ -37,8 +37,6 @@ func _ready():
 	for i in range(get_shape_count()):
 		spawn_shapes.append(get_shape(i))
 		
-	set_collide_with_kinematic_bodies(false)
-	
 	set_look_at(Vector3(1, 0, 0))
 	target_dir = Vector3(1, 0, 0)
 	
