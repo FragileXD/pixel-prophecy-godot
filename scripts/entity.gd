@@ -4,6 +4,7 @@ extends KinematicBody
 signal spawn
 signal death
 signal death_end
+signal damage(amount)
 
 # Body variables
 var run_speed = 1
@@ -22,6 +23,7 @@ onready var anim_player = get_node("Player-Model/AnimationPlayer")
 # Entity variables
 var health = 0
 var max_health = 0
+var takes_damage = true
 
 var spawn_shapes = []
 
@@ -87,7 +89,6 @@ func set_look_at(new_dir):
 func _moving_changed():
 	if moving:
 		anim_player.play("run")
-		print("run")
 	else:
 		anim_player.play("idle")
 
@@ -102,12 +103,21 @@ func primary_spell_cast(dir):
 		
 	dir = dir.normalized()
 	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
-	fireball.set_direction(dir)
+	fireball.set_direction(dir, 30)
 	fireball.set_damage(50)
 	fireball.set_translation(get_translation() + Vector3(0, 2, 0) + dir * 2)
 	get_node("/root/Node").add_child(fireball)
 	
 # Damage D:
+	
+func attempt_damage(amount):
+	if takes_damage:
+		receive_damage(damage_applied(amount))
+	emit_signal("damage", amount)
+	
+# Method to be overriden if not taking full damage etc
+func damage_applied(amount):
+	return amount
 	
 func receive_damage(amount):
 	health -= amount

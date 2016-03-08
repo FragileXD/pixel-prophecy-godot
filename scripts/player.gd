@@ -15,6 +15,8 @@ var tele_location = Vector3(0, 0, 0)
 func _init().(10, 100):
 	connect("spawn", self, "_on_spawn")
 	connect("death", self, "_on_death")
+	connect("damage", self, "_on_damage")
+	takes_damage = false
 
 func _ready():
 	set_fixed_process(true)
@@ -67,3 +69,6 @@ func _on_death():
 	
 func _on_spawn():
 	Global_vars.player = self
+	
+func _on_damage(amount):
+	print("Haha, I should take " + str(amount) + " damage, but I'm invincible!")

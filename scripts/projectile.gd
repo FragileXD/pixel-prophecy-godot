@@ -1,5 +1,5 @@
 
-extends KinematicBody
+extends RigidBody
 
 var direction = Vector3(0, 0, 0)
 var speed = 25
