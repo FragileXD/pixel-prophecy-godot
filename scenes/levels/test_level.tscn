@@ -53,7 +53,7 @@ srgb/enabled = false
 
 [node name="Node" type="Node"]
 
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"3D" }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 

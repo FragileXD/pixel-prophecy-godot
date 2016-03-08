@@ -12,12 +12,21 @@ const capacity_danger = Color(1, 0.15, 0.15)
 var curr_inv_page = 0
 const items_per_page = 4
 
+const layout_amount = 4
+
 func _ready():
 	inventory = get_node("inventory")
 	set_process_input(true)
 	get_node("inventory/items/left").connect("pressed", self, "_inv_page_down")
 	get_node("inventory/items/right").connect("pressed", self, "_inv_page_up")
 	
+	var layouts = inventory.get_node("layout-panel/layouts")
+	for i in range(layout_amount):
+		var b = Button.new()
+		b.set_text(str(i + 1))
+		b.set_custom_minimum_size(Vector2(0, layouts.get_size().y/layout_amount - 5))
+		layouts.add_child(b)
+		
 	
 func _input(event):
 	if event.is_action_released("inventory_toggle"):
@@ -28,11 +37,12 @@ func _input(event):
 			inventory.popup()
 			
 func update_inventory():
-	var capacity = inventory.get_node("capacity-label")
+	var capacity = inventory.get_node("items/capacity-label")
 	var curr_w = player.inventory.get_weight()
 	var max_w = player.inventory.weight_capacity
 	var percentage = curr_w * 1.0 / max_w
 	capacity.clear()
+	capacity.push_align(capacity.ALIGN_RIGHT)
 	if percentage < 0.5:
 		capacity.push_color(capacity_default)
 	elif percentage < 0.75:
