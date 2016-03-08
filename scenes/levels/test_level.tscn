@@ -85,9 +85,10 @@ transform/local = Transform( 8, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0 )
 [node name="Wall" parent="." instance=ExtResource( 3 )]
 
 transform/local = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 8, -16.3729, 2.50136, 0 )
-collision/margin = 0.001
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+
+collision/margin = 0.001
 
 [node name="Cam-target" type="Spatial" parent="Player"]
 

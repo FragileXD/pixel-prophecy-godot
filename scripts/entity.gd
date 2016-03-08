@@ -1,6 +1,10 @@
 
 extends KinematicBody
 
+signal spawn
+signal death
+signal death_end
+
 # Body variables
 var run_speed = 1
 
@@ -17,19 +21,29 @@ onready var anim_player = get_node("Player-Model/AnimationPlayer")
 
 # Entity variables
 var health = 0
+var max_health = 0
+
+var spawn_shapes = []
 
 func _init(runspeed, hp):
 	run_speed = runspeed
 	health = hp
+	max_health = hp
 
 func _ready():
 	set_fixed_process(true)
+	for i in range(get_shape_count()):
+		spawn_shapes.append(get_shape(i))
+		
 	set_collide_with_kinematic_bodies(false)
 	
 	set_look_at(Vector3(1, 0, 0))
 	target_dir = Vector3(1, 0, 0)
 	
 	anim_player.connect("finished", self, "_anim_finished")
+	
+func _enter_tree():
+	spawn()
 	
 func _fixed_process(delta):
 	if is_dead():
@@ -97,7 +111,7 @@ func primary_spell_cast(dir):
 func receive_damage(amount):
 	health -= amount
 	if is_dead():
-		_on_death()
+		emit_signal("death")
 		anim_player.play("die")
 		clear_shapes()
 
@@ -106,12 +120,13 @@ func is_dead():
 	
 func _anim_finished():
 	if anim_player.get_current_animation() == "die":
-		_on_death_end()
-		queue_free()
-	
-func _on_death():
-	print("default")
-
-func _on_death_end():
-	print("death_end")
+		emit_signal("death_end")
+		
+func spawn():
+	for shape in spawn_shapes:
+		add_shape(shape)
+	if anim_player != null:
+		anim_player.play_backwards("die")
+	health = max_health
+	emit_signal("spawn")
 	
