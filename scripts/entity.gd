@@ -103,10 +103,11 @@ func primary_spell_cast(dir):
 		
 	dir = dir.normalized()
 	var fireball = preload("res://scenes/objects/fireball.tscn").instance()
-	fireball.set_direction(dir, 30)
+	fireball.set_direction(dir)
 	fireball.set_damage(50)
 	fireball.set_translation(get_translation() + Vector3(0, 2, 0) + dir * 2)
 	get_node("/root/Node").add_child(fireball)
+	fireball.activate()
 	
 # Damage D:
 	

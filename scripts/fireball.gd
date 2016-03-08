@@ -4,8 +4,9 @@ extends "projectile_rigid.gd"
 var damage = 0
 
 func _ready():
-	set_mode(MODE_NORMAL)
+	set_projectile_mode(MODE_NORMAL)
 	connect("collision", self, "_collision")
+	set_speed(20)
 	
 func _collision(body):
 	speed = 0
@@ -25,4 +26,3 @@ func _explosion_effect_leave():
 	
 func set_damage(new_damage):
 	damage = new_damage
-
